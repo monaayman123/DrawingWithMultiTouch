@@ -1,7 +1,7 @@
 package com.example.drawingwithmultitouch
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -60,11 +60,17 @@ class MainActivity : ComponentActivity() {
                         viewModel.effect.collect { effect ->
                             when (effect) {
                                 is DrawingsUiEffect.SaveImage -> {
-                                    saveImage(
+                                    val uri = saveImage(
                                         bitmap = effect.bitmap,
                                         context = context,
                                         imageName = "drawing"
                                     )
+                                    val intent = Intent().apply {
+                                        action = Intent.ACTION_VIEW
+                                        setDataAndType(uri, "image/*")
+                                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                    }
+                                    context.startActivity(intent)
                                 }
 
                                 is DrawingsUiEffect.NavigateToHomeScreen -> {

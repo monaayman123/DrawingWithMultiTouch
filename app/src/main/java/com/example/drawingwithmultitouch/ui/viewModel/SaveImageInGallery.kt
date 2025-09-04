@@ -3,6 +3,7 @@ package com.example.drawingwithmultitouch.ui.viewModel
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
+import androidx.core.content.FileProvider
 import java.io.File
 import java.io.FileOutputStream
 
@@ -14,5 +15,6 @@ fun saveImage(bitmap: Bitmap, context: Context, imageName: String): Uri {
     FileOutputStream(imageFile).use { out ->
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
     }
-    return Uri.fromFile(imageFile)
+    val authority = "${context.packageName}.fileprovider"
+    return FileProvider.getUriForFile(context, authority, imageFile)
 }
