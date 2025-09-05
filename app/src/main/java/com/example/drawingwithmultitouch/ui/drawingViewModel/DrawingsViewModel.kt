@@ -18,7 +18,7 @@ class DrawingsViewModel : ViewModel() {
     private val _state = MutableStateFlow(DrawingsUiState())
     val state = _state.asStateFlow()
 
-    private val _effect = MutableSharedFlow<DrawingsUiEffect>()
+    private val _effect = MutableSharedFlow<DrawingsUiEffect>(replay = 1)
     val effect = _effect.asSharedFlow()
 
     fun onAction(action: DrawingsInteractionListener) {
@@ -39,7 +39,7 @@ class DrawingsViewModel : ViewModel() {
     }
 
     private fun captureCanvas(width: Int, height: Int): Bitmap {
-        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val bitmap = createBitmap(width, height)
         val canvas = Canvas(bitmap)
         canvas.drawColor(Color.White.toArgb())
 

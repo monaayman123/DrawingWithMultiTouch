@@ -1,5 +1,6 @@
 package com.example.drawingwithmultitouch
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -59,14 +60,28 @@ class MainActivity : ComponentActivity() {
                         viewModel.effect.collect { effect ->
                             when (effect) {
                                 is DrawingsUiEffect.SaveImage -> {
-                                    saveImage(
-                                        bitmap = effect.bitmap,
-                                        context = context,
-                                        imageName = "drawing"
-                                    )
+                                    try {
+                                        val timestamp = System.currentTimeMillis()
+                                        val uri = saveImage(
+                                            bitmap = effect.bitmap,
+                                            context = context,
+                                            imageName = "drawing_$timestamp"
+                                        )
+                                        // Optional: Show the saved image in gallery app
+                                        val intent = Intent().apply {
+                                            action = Intent.ACTION_VIEW
+                                            setDataAndType(uri, "image/*")
+                                            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                        }
+                                        context.startActivity(intent)
+                                    } catch (e: Exception) {
+                                        // Handle save error - could show a toast or dialog
+                                        android.util.Log.e("SaveImage", "Failed to save image", e)
+                                    }
                                 }
 
                                 is DrawingsUiEffect.NavigateToHomeScreen -> {
+                                    finish()
                                 }
                             }
                         }
