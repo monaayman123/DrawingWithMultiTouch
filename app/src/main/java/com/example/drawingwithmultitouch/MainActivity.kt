@@ -60,17 +60,24 @@ class MainActivity : ComponentActivity() {
                         viewModel.effect.collect { effect ->
                             when (effect) {
                                 is DrawingsUiEffect.SaveImage -> {
-                                    val uri = saveImage(
-                                        bitmap = effect.bitmap,
-                                        context = context,
-                                        imageName = "drawing"
-                                    )
-                                    val intent = Intent().apply {
-                                        action = Intent.ACTION_VIEW
-                                        setDataAndType(uri, "image/*")
-                                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                    try {
+                                        val timestamp = System.currentTimeMillis()
+                                        val uri = saveImage(
+                                            bitmap = effect.bitmap,
+                                            context = context,
+                                            imageName = "drawing_$timestamp"
+                                        )
+                                        // Optional: Show the saved image in gallery app
+                                        val intent = Intent().apply {
+                                            action = Intent.ACTION_VIEW
+                                            setDataAndType(uri, "image/*")
+                                            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                        }
+                                        context.startActivity(intent)
+                                    } catch (e: Exception) {
+                                        // Handle save error - could show a toast or dialog
+                                        android.util.Log.e("SaveImage", "Failed to save image", e)
                                     }
-                                    context.startActivity(intent)
                                 }
 
                                 is DrawingsUiEffect.NavigateToHomeScreen -> {
