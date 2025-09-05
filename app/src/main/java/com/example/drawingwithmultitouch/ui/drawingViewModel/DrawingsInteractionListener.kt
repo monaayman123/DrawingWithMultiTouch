@@ -1,4 +1,4 @@
-package com.example.drawingwithmultitouch.ui.viewModel
+package com.example.drawingwithmultitouch.ui.drawingViewModel
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color

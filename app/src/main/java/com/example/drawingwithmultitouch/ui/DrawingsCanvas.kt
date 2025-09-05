@@ -18,8 +18,8 @@ import androidx.compose.ui.input.pointer.changedToUp
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
-import com.example.drawingwithmultitouch.ui.viewModel.DrawingsInteractionListener
-import com.example.drawingwithmultitouch.ui.viewModel.PathData
+import com.example.drawingwithmultitouch.ui.drawingViewModel.DrawingsInteractionListener
+import com.example.drawingwithmultitouch.ui.drawingViewModel.PathData
 import kotlin.math.abs
 
 @Composable

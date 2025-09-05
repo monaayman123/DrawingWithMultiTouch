@@ -1,4 +1,4 @@
-package com.example.drawingwithmultitouch.ui.viewModel
+package com.example.drawingwithmultitouch.ui.drawingViewModel
 
 import android.content.Context
 import android.graphics.Bitmap

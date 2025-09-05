@@ -1,13 +1,11 @@
-package com.example.drawingwithmultitouch.ui.viewModel
+package com.example.drawingwithmultitouch.ui.drawingViewModel
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.util.Log
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.core.graphics.createBitmap
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

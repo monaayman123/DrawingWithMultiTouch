@@ -1,7 +1,6 @@
 package com.example.drawingwithmultitouch
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -36,11 +35,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.drawingwithmultitouch.ui.CanvasControls
 import com.example.drawingwithmultitouch.ui.DrawingCanvas
 import com.example.drawingwithmultitouch.ui.theme.DrawingWithMultiTouchTheme
-import com.example.drawingwithmultitouch.ui.viewModel.DrawingsInteractionListener
-import com.example.drawingwithmultitouch.ui.viewModel.DrawingsUiEffect
-import com.example.drawingwithmultitouch.ui.viewModel.DrawingsViewModel
-import com.example.drawingwithmultitouch.ui.viewModel.allColors
-import com.example.drawingwithmultitouch.ui.viewModel.saveImage
+import com.example.drawingwithmultitouch.ui.drawingViewModel.DrawingsInteractionListener
+import com.example.drawingwithmultitouch.ui.drawingViewModel.DrawingsUiEffect
+import com.example.drawingwithmultitouch.ui.drawingViewModel.DrawingsViewModel
+import com.example.drawingwithmultitouch.ui.drawingViewModel.allColors
+import com.example.drawingwithmultitouch.ui.drawingViewModel.saveImage
 
 
 class MainActivity : ComponentActivity() {
