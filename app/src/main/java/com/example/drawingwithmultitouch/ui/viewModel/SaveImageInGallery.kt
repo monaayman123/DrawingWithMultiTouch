@@ -10,7 +10,6 @@ import android.provider.MediaStore
 import androidx.core.content.FileProvider
 import java.io.File
 import java.io.FileOutputStream
-import java.io.OutputStream
 
 fun saveImage(bitmap: Bitmap, context: Context, imageName: String): Uri {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
